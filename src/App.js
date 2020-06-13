@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Carousel from "./Carousel";
+import FileUploader from "./fileUploader";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      imageUrlList: [
+        "https://i.insider.com/5c6ef4f52628982b9e0d5742?width=750&format=jpeg&auto=webp",
+        "https://sites.google.com/site/thisisjustatest2294/_/rsrc/1468742544208/project-resources/image-search/google-image-search/Screen%20Shot%202015-11-28%20at%201.14.27%20PM.png"
+      ]
+    };
+  }
+
+  handleImageUpload = uploadedImages => {
+    this.setState({
+      imageUrlList: [...this.state.imageUrlList, ...uploadedImages]
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <Carousel images={this.state.imageUrlList} />
+        <FileUploader
+          handleImageUpload={images => this.handleImageUpload(images)}
+          accept="image/png,image/jpg,application/pdf"
+          isMultiple
+        />
+      </div>
+    );
+  }
 }
-
-export default App;
