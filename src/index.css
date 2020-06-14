@@ -5,6 +5,10 @@
   position: relative;
   background-color: #f9f5f5;
 }
+.slide{
+  display: flex;
+  align-items: center;
+}
 .slide img {
   cursor: pointer;
 }
