@@ -7,8 +7,8 @@ export default class App extends Component {
     super(props);
     this.state = {
       imageUrlList: [
-        "https://i.insider.com/5c6ef4f52628982b9e0d5742?width=750&format=jpeg&auto=webp",
-        "https://sites.google.com/site/thisisjustatest2294/_/rsrc/1468742544208/project-resources/image-search/google-image-search/Screen%20Shot%202015-11-28%20at%201.14.27%20PM.png"
+        "https://i.pinimg.com/originals/cc/18/8c/cc188c604e58cffd36e1d183c7198d21.jpg",
+        "https://images.unsplash.com/photo-1500322969630-a26ab6eb64cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjExMjU4fQ&w=1000&q=80"
       ]
     };
   }
@@ -27,6 +27,7 @@ export default class App extends Component {
           handleImageUpload={images => this.handleImageUpload(images)}
           accept="image/png,image/jpg,application/pdf"
           isMultiple
+          successMessage="Image's uploaded successfully"
         />
       </div>
     );

@@ -3,9 +3,11 @@
   margin: 0;
   width: 100%;
   position: relative;
-  background-color: #efefef;
+  background-color: #f9f5f5;
 }
-
+.slide img {
+  cursor: pointer;
+}
 .slide-btn {
   position: absolute;
   top: 50%;
@@ -14,6 +16,7 @@
   height: 50px;
   cursor: pointer;
   border: 0;
+  box-shadow: 0 4px 7px 0 rgba(218, 220, 230, 0.6);
 }
 .slide-btn:focus {
   outline: none;
@@ -28,13 +31,17 @@
 .slide-btn.btn-next {
   right: 15px;
 }
-
 .slide-btn.btn-prev {
   left: 15px;
 }
+.fileupload-container {
+  margin: 35px 0 0 15px;
+}
+
+/*------ File upload -------*/
 .custom-file-input {
   color: transparent;
-  margin-top: 35px;
+  margin: 0 auto;
 }
 .custom-file-input:focus {
   outline: none;
@@ -44,12 +51,13 @@
 }
 .custom-file-input::before {
   content: "Upload Images";
+  text-align: center;
   color: black;
   display: inline-block;
   background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
   border: 1px solid #999;
   border-radius: 3px;
-  padding: 5px 8px;
+  padding: 15px;
   outline: none;
   white-space: nowrap;
   -webkit-user-select: none;
@@ -66,4 +74,30 @@
 }
 .custom-file-input:active::before {
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+/*------ Modal --------*/
+.carousel-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.carousel-modal:before {
+  content: "";
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background-color: #333;
+  width: 100%;
+  opacity: 0.95;
+}
+.carousel-modal img {
+  position: relative;
+  z-index: 1;
 }

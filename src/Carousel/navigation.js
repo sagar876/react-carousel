@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 const Navigation = props => {
   const { goToNextSlide, goToPrevSlide } = props;
   return (
@@ -13,4 +13,14 @@ const Navigation = props => {
     </>
   );
 };
+Navigation.propTypes = {
+  goToNextSlide: PropTypes.func,
+  goToPrevSlide: PropTypes.func
+};
+
+Navigation.defaultProps = {
+  goToNextSlide: () => {},
+  goToPrevSlide: () => {}
+};
+
 export default Navigation;

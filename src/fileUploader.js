@@ -1,5 +1,9 @@
 import React from "react";
-
+import PropTypes from "prop-types";
+const successMsgStyle = {
+  color: "green",
+  fontWeight: 500
+};
 export default class FileUploader extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -22,6 +26,7 @@ export default class FileUploader extends React.PureComponent {
           },
           () => {
             this.props.handleImageUpload(imageURIs);
+            this.handleUploadMessage();
           }
         );
       };
@@ -29,10 +34,21 @@ export default class FileUploader extends React.PureComponent {
     }
   };
 
+  handleUploadMessage = () => {
+    this.setState({
+      isUploaded: true
+    });
+    setTimeout(() => {
+      this.setState({
+        isUploaded: false
+      });
+    }, 2000);
+  };
+
   render() {
-    const { isMultiple, accept } = this.props;
+    const { isMultiple, accept, successMessage } = this.props;
     return (
-      <>
+      <div className="fileupload-container">
         <input
           className="custom-file-input"
           type="file"
@@ -40,7 +56,22 @@ export default class FileUploader extends React.PureComponent {
           multiple={isMultiple}
           accept={accept}
         />
-      </>
+        {this.state.isUploaded && (
+          <p style={successMsgStyle}>{successMessage}</p>
+        )}
+      </div>
     );
   }
 }
+
+FileUploader.propTypes = {
+  accept: PropTypes.string,
+  successMsgStyle: PropTypes.string,
+  isMultiple: PropTypes.bool
+};
+
+FileUploader.defaultProps = {
+  accept: "",
+  successMsgStyle: "Files uploaded",
+  isMultiple: false
+};
